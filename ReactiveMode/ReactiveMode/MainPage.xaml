@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReactiveMode.MainPage">
+
+    <StackLayout Padding="15,10">
+        <Entry Placeholder="Enter Name" 
+               Text="{Binding Name, Mode=TwoWay}"  />
+        
+        <Entry Placeholder="Enter LastName" 
+               Text="{Binding LastName, Mode=TwoWay}"  />
+        
+        <Entry Placeholder="Username" 
+               Text="{Binding UserName, Mode=TwoWay}"  />
+        
+        <Entry Placeholder="Passsord" 
+               IsPassword="True" Text="{Binding Password, Mode=TwoWay}"  />
+
+        <Button Text="Submit" 
+                Command="{Binding SubmitCommand}"/>
+    </StackLayout>
+</ContentPage>
