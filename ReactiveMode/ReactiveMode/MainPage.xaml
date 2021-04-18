@@ -17,6 +17,14 @@
                IsPassword="True" Text="{Binding Password, Mode=TwoWay}"  />
 
         <Button Text="Submit" 
-                Command="{Binding SubmitCommand}"/>
+                Command="{Binding CreateCommand}"/>
+
+        <Label Text="{Binding FullName}" HorizontalOptions="CenterAndExpand"  />
+
+        <Label Text="{Binding LatestDocumentId}" 
+               HorizontalOptions="CenterAndExpand" 
+               VerticalOptions="End"/>
+
     </StackLayout>
+    
 </ContentPage>

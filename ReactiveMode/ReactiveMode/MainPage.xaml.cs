@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Splat;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -11,9 +12,9 @@ namespace ReactiveMode
     public partial class MainPage : ContentPage
     {
         public MainViewModel ViewModel { get; private set; }
-        public MainPage(IAppEventObservable appEvents)
+        public MainPage()
         {
-            ViewModel = new MainViewModel(appEvents);
+            ViewModel = Locator.Current.GetService<MainViewModel>();
             BindingContext = ViewModel;
             InitializeComponent();
         }

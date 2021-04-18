@@ -1,6 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ReactiveUI;
+using Splat;
 
 namespace ReactiveMode
 {
@@ -12,9 +14,18 @@ namespace ReactiveMode
         {
             InitializeComponent();
 
-            appEvents = new AppEvents();
+            RegisterDependencies();
 
-            MainPage = new MainPage(appEvents);
+            appEvents = Locator.Current.GetService<IAppEventObservable>() as AppEvents;
+
+            MainPage = new MainPage();
+        }
+
+        private void RegisterDependencies()
+        {
+            Locator.CurrentMutable.RegisterConstant(new AppEvents(), typeof(IAppEventObservable));
+
+            Locator.CurrentMutable.Register(() => new MainViewModel(Locator.Current.GetService<IAppEventObservable>()), typeof(MainViewModel));
         }
 
         protected override void OnStart()
